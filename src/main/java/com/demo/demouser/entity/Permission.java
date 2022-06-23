@@ -3,10 +3,8 @@ package com.demo.demouser.entity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 /**
  * @author declan.nguyen
@@ -23,8 +21,11 @@ import javax.persistence.Table;
 public class Permission {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String name;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "permissions")
+    Set<User> users;
 }

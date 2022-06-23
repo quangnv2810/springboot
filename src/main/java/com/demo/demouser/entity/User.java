@@ -4,7 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author declan.nguyen
@@ -21,19 +21,17 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String name;
 
     Long userPermissionId;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @EqualsAndHashCode.Exclude // không sử dụng trường này trong equals và hashcode
-    @ToString.Exclude
-    @JoinTable(name = "user_permission", //Tạo ra một join Table tên là "address_person"
-            joinColumns = @JoinColumn(name = "user_id"),  // TRong đó, khóa ngoại chính là address_id trỏ tới class hiện tại (Address)
-            inverseJoinColumns = @JoinColumn(name = "permission_id") //Khóa ngoại thứ 2 trỏ tới thuộc tính ở dưới (Person)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_permission",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id")
     )
-    List<Permission> permissions;
+    Set<Permission> permissions;
 }

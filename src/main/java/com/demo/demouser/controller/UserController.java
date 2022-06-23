@@ -25,6 +25,4 @@ public class UserController {
     public ResponseEntity<Long> createUser(@RequestBody UserDTO userDTO) {
         return ResponseEntity.ok(userService.createUser(userDTO));
     }
-
-
 }
