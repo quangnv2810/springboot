@@ -1,12 +1,11 @@
 create table users (
 	id int8 not null primary key auto_increment,
-	name varchar(255),
-	user_permission_id int8 not null
+	name varchar(255)
 );
 
-insert into users (name, user_permission_id) values ('quang', 1);
-insert into users (name, user_permission_id) values ('tuan', 2);
-insert into users (name, user_permission_id) values ('manh', 3);
+insert into users (name) values ('quang');
+insert into users (name) values ('tuan');
+insert into users (name) values ('manh');
 
 
 create table permission (

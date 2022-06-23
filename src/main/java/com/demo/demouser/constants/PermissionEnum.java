@@ -7,21 +7,21 @@ package com.demo.demouser.constants;
  */
 public enum PermissionEnum {
 
-    ADMIN(1L),
-    USER(2L),
-    DEV(3L);
+    ADMIN("admin"),
+    USER("user"),
+    DEV("dev");
 
-    private Long id;
+    private String name;
 
-    PermissionEnum(Long id) {
-        this.id = id;
+    PermissionEnum(String name) {
+        this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String name) {
+        this.name = name;
     }
 }

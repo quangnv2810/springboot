@@ -1,9 +1,11 @@
 package com.demo.demouser.service.user;
 
+import com.demo.demouser.constants.PermissionEnum;
 import com.demo.demouser.dto.UserDTO;
 import com.demo.demouser.entity.User;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author declan.nguyen
@@ -12,7 +14,12 @@ import java.util.List;
  */
 public interface IUserService {
 
+    /**
+     * create new user
+     * @param userDTO user info
+     * @return id user created
+     */
     Long createUser(UserDTO userDTO);
 
-    List<User> getAllUser();
+    Set<User> getAllUserByPermission(PermissionEnum permissionEnum);
 }
